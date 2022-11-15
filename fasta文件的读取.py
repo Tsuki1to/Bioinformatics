@@ -10,7 +10,7 @@ sequence = {}
 for i in SI.parse('CYP90D1.fasta','fasta'):
     # print(i.id)
     # print(i.seq)
-    print(i.id,GC((i.seq)))
+    print('基因ID为:',i.id,'\n','基因序列为：',i.seq,'基因的序列长度为：',len(i.seq),'基因的GC含量为：',GC((i.seq)))
     sequence[(i.id)] = str(i.seq)
 # print(sequence)
 
