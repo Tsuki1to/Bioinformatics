@@ -33,7 +33,7 @@ df1.drop(labels='Unnamed: 0',axis=1,inplace=True)
 
 # print(df1.head())
 # print(df1.describe())
-#normalization 去均值，标准化（去中心化）
+#normalization 去均值，标准化（中心化）》：使所有的K均值=0
 def norm_(x):
     xmean = np.mean(x,0)
     std = np.std(x,0)
@@ -43,7 +43,7 @@ print(df1_.describe())
 #V
 #np.linalg.eig()  求矩阵的特征值与特征向量
 # ew,ev = np.linalg.eig(df1_.T.dot(df1_))   #x.T.dot(矩阵内积)x   ==cov(x.T) 上下两个公式得出的特征值有差别
-ew,ev = np.linalg.eig(np.cov(df1_.T))
+ew,ev = np.linalg.eig(np.cov(df1_.T))   #生成标准化矩阵X_0
   #7个feature对应7个特征值
 #ew特征值的排序
 ew_order = np.argsort(ew)[::-1]
@@ -59,6 +59,11 @@ plt.show()
 
 #ev_sort--->V
 V = ev_sort[:,:2]
+#选取k个主成分，当前k个数据的累计贡献率能评价院士数据的解释程度(碎石图（screen plot）中)
+#当达到60%的时候即可以接受
+#当达到80%说明效果良好
+#主成分<=3才能实现图像的可视化
+#最常见的是二维得分图
 #X_new
 X_new = df1_.dot(V)
 # print(X_new.shape) #(891, 2)   #由原先的7列数据降维到了2列数据
