@@ -35,8 +35,8 @@ ev_sort = ev[:,ew_order]
 print(ew_sort)
 #[5.68766116 0.7301124  0.55895302 0.32633295 0.2514573  0.19862308 0.15167516 0.11523505]
 print(ev_sort)
-# pd.DataFrame(ew_sort).plot(kind = 'bar')
-# plt.show()
+pd.DataFrame(ew_sort).plot(kind = 'bar')
+plt.show()
 V= ev_sort[:,:2]
 X_new = df1.dot(V)
 sc = plt.scatter(X_new.iloc[:,0],X_new.iloc[:,1],s=5,c= df1_0['Chance of Admit '],cmap= plt.cm.coolwarm)
