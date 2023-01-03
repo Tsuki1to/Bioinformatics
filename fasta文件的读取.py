@@ -15,7 +15,7 @@ for i in SI.parse('CYP90D1.fasta','fasta'):
     sequence[(i.id)] = str(i.seq)
 
 a = pd.Series(sequence,index=[1,2,3])
-print(a.shape)
+print(a)
 # b= pd.DataFrame(a,index=a.index,columns=[1,2,3])
 
 
